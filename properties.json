@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "title": "Clifftop Villa Uluwatu",
+    "location": "Uluwatu, Bukit Peninsula",
+    "price": "$1,250,000",
+    "type": "Villa",
+    "beds": 4,
+    "baths": 4,
+    "sqm": 580,
+    "land_sqm": 800,
+    "description": "Perched above the Indian Ocean with panoramic sunset views, this architectural masterpiece blends Balinese craftsmanship with contemporary luxury.",
+    "image": "images/section/properties/listing-01/properti-01.jpg",
+    "images": [
+      { "url": "images/section/properties/listing-01/details/detail-01.jpg", "alt": "Clifftop Villa Uluwatu — exterior" },
+      { "url": "images/section/properties/listing-01/details/detail-02.jpg", "alt": "Clifftop Villa Uluwatu — pool" },
+      { "url": "images/section/properties/listing-01/details/detail-03.jpg", "alt": "Clifftop Villa Uluwatu — living room" },
+      { "url": "images/section/properties/listing-01/details/detail-04.jpg", "alt": "Clifftop Villa Uluwatu — bedroom" },
+      { "url": "images/section/properties/listing-01/details/detail-05.jpg", "alt": "Clifftop Villa Uluwatu — bathroom" }
+    ],
+    "tag": "Featured"
+  },
+  {
+    "id": 2,
+    "title": "Tropical Rice Field Retreat",
+    "location": "Ubud, Central Bali",
+    "price": "$680,000",
+    "type": "Villa",
+    "beds": 3,
+    "baths": 3,
+    "sqm": 420,
+    "land_sqm": 600,
+    "description": "Nestled among emerald terraced rice fields, this serene villa offers the quintessential Ubud lifestyle with private pool and meditation pavilion.",
+    "image": "images/section/properties/listing-02/properti-02.jpg",
+    "images": [
+      { "url": "images/section/properties/listing-02/details/detail-01.jpg", "alt": "Tropical Rice Field Retreat — exterior" },
+      { "url": "images/section/properties/listing-02/details/detail-02.jpg", "alt": "Tropical Rice Field Retreat — pool" },
+      { "url": "images/section/properties/listing-02/details/detail-03.jpg", "alt": "Tropical Rice Field Retreat — garden" }
+    ],
+    "tag": "New Listing"
+  },
+  {
+    "id": 3,
+    "title": "Seminyak Beachfront Estate",
+    "location": "Seminyak, West Bali",
+    "price": "$2,100,000",
+    "type": "Estate",
+    "beds": 6,
+    "baths": 6,
+    "sqm": 950,
+    "land_sqm": 1400,
+    "description": "An extraordinary beachfront compound steps from Seminyak's finest dining and boutiques. Dual villas with private beach access and full staff quarters.",
+    "image": "images/section/properties/listing-03/properti-03.jpg",
+    "images": [
+      { "url": "images/section/properties/listing-03/details/detail-01.jpg", "alt": "Seminyak Beachfront Estate — aerial" },
+      { "url": "images/section/properties/listing-03/details/detail-02.jpg", "alt": "Seminyak Beachfront Estate — beach" },
+      { "url": "images/section/properties/listing-03/details/detail-03.jpg", "alt": "Seminyak Beachfront Estate — interior" },
+      { "url": "images/section/properties/listing-03/details/detail-04.jpg", "alt": "Seminyak Beachfront Estate — bedroom" }
+    ],
+    "tag": "Luxury"
+  },
+  {
+    "id": 4,
+    "title": "Canggu Modernist Hideaway",
+    "location": "Canggu, Badung",
+    "price": "$495,000",
+    "type": "Villa",
+    "beds": 2,
+    "baths": 2,
+    "sqm": 280,
+    "land_sqm": 350,
+    "description": "A designer's dream in Bali's most vibrant creative hub. Polished concrete, teak accents, and a 12-meter lap pool in a lush tropical garden.",
+    "image": "images/section/properties/listing-04/properti-04.jpg",
+    "images": [
+      { "url": "images/section/properties/listing-04/details/detail-01.jpg", "alt": "Canggu Modernist Hideaway — pool" },
+      { "url": "images/section/properties/listing-04/details/detail-02.jpg", "alt": "Canggu Modernist Hideaway — living area" },
+      { "url": "images/section/properties/listing-04/details/detail-03.jpg", "alt": "Canggu Modernist Hideaway — kitchen" }
+    ],
+    "tag": "Hot Property"
+  },
+  {
+    "id": 5,
+    "title": "Jimbaran Ocean View Villa",
+    "location": "Jimbaran, South Bali",
+    "price": "$875,000",
+    "type": "Villa",
+    "beds": 4,
+    "baths": 3,
+    "sqm": 510,
+    "land_sqm": 700,
+    "description": "Cascading terraces lead down to a stunning infinity pool overlooking Jimbaran Bay. Watch traditional fishing boats at dawn from your private sun terrace.",
+    "image": "images/section/properties/listing-05/properti-05.jpg",
+    "images": [
+      { "url": "images/section/properties/listing-05/details/detail-01.jpg", "alt": "Jimbaran Ocean View Villa — ocean view" },
+      { "url": "images/section/properties/listing-05/details/detail-02.jpg", "alt": "Jimbaran Ocean View Villa — infinity pool" },
+      { "url": "images/section/properties/listing-05/details/detail-03.jpg", "alt": "Jimbaran Ocean View Villa — bedroom" }
+    ],
+    "tag": "Sea View"
+  },
+  {
+    "id": 6,
+    "title": "Sanur Heritage Compound",
+    "location": "Sanur, East Denpasar",
+    "price": "$1,050,000",
+    "type": "Compound",
+    "beds": 5,
+    "baths": 5,
+    "sqm": 700,
+    "land_sqm": 1000,
+    "description": "A rare traditional Balinese compound reimagined for modern living. Three pavilions around a central courtyard, 200m from Sanur's white sand beach.",
+    "image": "images/section/properties/listing-06/properti-06.jpg",
+    "images": [
+      { "url": "images/section/properties/listing-06/details/detail-01.jpg", "alt": "Sanur Heritage Compound — courtyard" },
+      { "url": "images/section/properties/listing-06/details/detail-02.jpg", "alt": "Sanur Heritage Compound — pavilion" },
+      { "url": "images/section/properties/listing-06/details/detail-03.jpg", "alt": "Sanur Heritage Compound — interior" },
+      { "url": "images/section/properties/listing-06/details/detail-04.jpg", "alt": "Sanur Heritage Compound — bedroom" }
+    ],
+    "tag": "Rare Find"
+  }
+]

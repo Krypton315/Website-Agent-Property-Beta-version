@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Detail — Villa Bali Realty</title>
+  <meta name="description" content="Luxury property detail — Villa Bali Realty" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+
+  <style>
+    /* ── Property Detail Page — scoped styles ── */
+
+    /* Back bar */
+    .detail-back-bar {
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .detail-back-bar .container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--forest);
+      transition: var(--transition);
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link svg { transition: transform 0.2s ease; }
+    .back-link:hover svg { transform: translateX(-3px); }
+    .back-bar-title {
+      font-family: var(--ff-body);
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+      margin-left: auto;
+    }
+
+    /* Page layout */
+    .detail-page {
+      padding: var(--space-lg) 0 var(--space-xl);
+    }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    @media (max-width: 960px) {
+      .detail-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ── Gallery ── */
+    .gallery-wrap {}
+    .gallery-main {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--cream-dark);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s ease;
+    }
+    .gallery-main img.fading { opacity: 0; }
+
+    .gallery-thumbs {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .gallery-thumb {
+      width: calc(20% - 0.5rem);
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color 0.2s ease, opacity 0.2s ease;
+      flex-shrink: 0;
+    }
+    .gallery-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .gallery-thumb:hover { opacity: 0.85; }
+    .gallery-thumb.active { border-color: var(--gold); }
+
+    @media (max-width: 600px) {
+      .gallery-thumb { width: calc(25% - 0.5rem); }
+    }
+
+    /* ── Property meta below gallery ── */
+    .detail-meta {
+      margin-top: var(--space-md);
+    }
+    .detail-tag {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.9rem;
+    }
+    .detail-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      color: var(--forest-deep);
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .detail-location {
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      color: var(--warm-gray);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-bottom: var(--space-md);
+    }
+    .detail-description {
+      font-size: var(--fs-body);
+      color: var(--charcoal);
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+
+    /* Specs grid */
+    .detail-specs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin-bottom: var(--space-md);
+    }
+    @media (max-width: 500px) {
+      .detail-specs { grid-template-columns: repeat(2, 1fr); }
+    }
+    .detail-spec {
+      background: var(--white);
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .detail-spec .spec-icon {
+      font-size: 1.4rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .detail-spec .spec-value {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--forest-deep);
+      display: block;
+    }
+    .detail-spec .spec-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      display: block;
+      margin-top: 0.1rem;
+    }
+
+    /* ── Sticky sidebar card ── */
+    .detail-sidebar {
+      position: sticky;
+      top: calc(70px + var(--space-md)); /* below back-bar */
+    }
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-card);
+    }
+    .sidebar-price {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--forest-deep);
+      margin-bottom: 0.3rem;
+    }
+    .sidebar-type {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      margin-bottom: var(--space-md);
+    }
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border);
+      margin: var(--space-sm) 0;
+    }
+    .sidebar-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      padding: 0.5rem 0;
+    }
+    .sidebar-row span:first-child { color: var(--warm-gray); }
+    .sidebar-row span:last-child { font-weight: 500; }
+    .sidebar-cta {
+      margin-top: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .sidebar-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .btn-wa {
+      background: #25D366;
+      color: var(--white);
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+
+    /* Loading & error states */
+    .detail-loading,
+    .detail-error {
+      text-align: center;
+      padding: var(--space-xl) var(--space-md);
+    }
+    .detail-loading p,
+    .detail-error p {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      color: var(--warm-gray);
+    }
+    .detail-error a {
+      color: var(--gold);
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       BACK NAVIGATION BAR
+       ============================================================ -->
+  <div class="detail-back-bar">
+    <div class="container">
+      <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        All Properties
+      </a>
+      <span class="back-bar-title" id="backBarTitle">Property Detail</span>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       PROPERTY DETAIL — injected by property-detail.js
+       ============================================================ -->
+  <main class="detail-page">
+    <div class="container">
+
+      <!-- Loading state (shown until JS renders content) -->
+      <div class="detail-loading" id="detailLoading">
+        <p>Loading property…</p>
+      </div>
+
+      <!-- Error state (shown if property not found) -->
+      <div class="detail-error" id="detailError" style="display:none;">
+        <p>Property not found. <a href="index.html">← Back to listings</a></p>
+      </div>
+
+      <!-- Detail content (hidden until ready) -->
+      <div class="detail-layout" id="detailContent" style="display:none;">
+
+        <!-- LEFT COLUMN: Gallery + meta -->
+        <div class="detail-left">
+
+          <!-- Gallery -->
+          <div class="gallery-wrap">
+            <div class="gallery-main">
+              <img id="galleryMainImg" src="" alt="" />
+            </div>
+            <div class="gallery-thumbs" id="galleryThumbs"></div>
+          </div>
+
+          <!-- Property meta -->
+          <div class="detail-meta">
+            <span class="detail-tag" id="detailTag"></span>
+            <h1 class="detail-title" id="detailTitle"></h1>
+            <p class="detail-location">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <span id="detailLocation"></span>
+            </p>
+            <p class="detail-description" id="detailDescription"></p>
+
+            <!-- Specs -->
+            <div class="detail-specs">
+              <div class="detail-spec">
+                <span class="spec-icon">🛏</span>
+                <span class="spec-value" id="specBeds"></span>
+                <span class="spec-label">Bedrooms</span>
+              </div>
+              <div class="detail-spec">
+                <span class="spec-icon">🚿</span>
+                <span class="spec-value" id="specBaths"></span>
+                <span class="spec-label">Bathrooms</span>
+              </div>
+              <div class="detail-spec">
+                <span class="spec-icon">📐</span>
+                <span class="spec-value" id="specSqm"></span>
+                <span class="spec-label">Building m²</span>
+              </div>
+              <div class="detail-spec">
+                <span class="spec-icon">🌿</span>
+                <span class="spec-value" id="specLand"></span>
+                <span class="spec-label">Land m²</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Sticky sidebar -->
+        <aside class="detail-sidebar">
+          <div class="sidebar-card">
+            <p class="sidebar-price" id="sidebarPrice"></p>
+            <p class="sidebar-type" id="sidebarType"></p>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-row">
+              <span>Location</span>
+              <span id="sidebarLocation"></span>
+            </div>
+            <div class="sidebar-row">
+              <span>Property Type</span>
+              <span id="sidebarTypeRow"></span>
+            </div>
+            <div class="sidebar-row">
+              <span>Bedrooms</span>
+              <span id="sidebarBeds"></span>
+            </div>
+            <div class="sidebar-row">
+              <span>Bathrooms</span>
+              <span id="sidebarBaths"></span>
+            </div>
+            <div class="sidebar-row">
+              <span>Building Size</span>
+              <span id="sidebarSqm"></span>
+            </div>
+            <div class="sidebar-row" id="sidebarLandRow">
+              <span>Land Size</span>
+              <span id="sidebarLand"></span>
+            </div>
+            <div class="sidebar-divider"></div>
+            <div class="sidebar-cta">
+              <a id="sidebarWa" href="#" class="btn btn-wa" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Enquire via WhatsApp
+              </a>
+              <a href="index.html#contact" class="btn btn-outline">
+                Send an Enquiry →
+              </a>
+            </div>
+          </div>
+        </aside>
+
+      </div><!-- /.detail-layout -->
+    </div>
+  </main>
+
+
+  <!-- ============================================================
+       FOOTER (minimal — reuses footer styles from style.css)
+       ============================================================ -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom" style="border-top:none; padding-top:0;">
+        <p>© 2025 Villa Bali Realty. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal links">
+          <a href="index.html">Back to Listings</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="property-detail.js"></script>
+
+</body>
+</html>
