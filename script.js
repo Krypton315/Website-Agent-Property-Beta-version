@@ -90,7 +90,7 @@ const propertiesGrid = document.getElementById('propertiesGrid');
  * @returns {string} HTML string for the card
  */
 function buildPropertyCard(property) {
-  const detailUrl = 'property?id=' + property.id;
+  const detailUrl = 'property.html?id=' + property.id;
   return `
     <a href="${detailUrl}" class="property-card reveal" role="listitem" aria-label="${property.title}">
 
